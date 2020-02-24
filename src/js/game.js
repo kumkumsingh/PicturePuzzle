@@ -8,7 +8,7 @@ class Game {
     //Create object of GameBoard
     this.gameBoard = new GameBoard();
     this.gameBoard.numberShuffle();
-    this.gameBoard.populate();
+    this.gameBoard.populateCell();
     document.addEventListener(
       "click",
       e => {

@@ -15,10 +15,12 @@ class GameBoard {
         i--;
       }
     }
+    //keep the last element as constant 16.
     this.cells.push(this.lastElement)
   };
-  //Populate the random numbers in each cell except last 16th cell.
-  populate = () => {
+  //Populate the random numbers in each cell except last 16th element
+  // in the 16th cell because it has to be empty in order to suffle with the element which is clicked.
+  populateCell = () => {
     let id = "";
     let divElement;
     let index = 0;
@@ -35,7 +37,7 @@ class GameBoard {
       }
     }
   };
-
+  //Assigns (125px * 125px) size image to each cell of the grid 
   assignImg = (element, cellValue) => {
     let imgClassName = "img" + cellValue;
     element.classList.add(imgClassName);
