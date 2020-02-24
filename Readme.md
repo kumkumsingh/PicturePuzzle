@@ -23,7 +23,7 @@
 6. Just one movement is possible each time.
 7. Game ends when all pieces are in the right position, showing the image 
    clearly.
-8. Play Again button to play the game again.
+8. Start button to start the game.
 
 <a name="run"></a>
 
