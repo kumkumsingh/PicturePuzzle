@@ -9,26 +9,14 @@
   <body>
     <h1>Picture Puzzle Game</h1>
     <div id="gameWrapper">
-        <div class="gameGrid">
-            <div id="p00" class="gridStyle"></div>
-            <div id="p01" class="gridStyle"></div>
-            <div id="p02" class="gridStyle"></div>
-            <div id="p03" class="gridStyle"></div>
-            <div id="p10" class="gridStyle"></div>
-            <div id="p11" class="gridStyle"></div>
-            <div id="p12" class="gridStyle"></div>
-            <div id="p13" class="gridStyle"></div>
-            <div id="p20" class="gridStyle"></div>
-            <div id="p21" class="gridStyle"></div>
-            <div id="p22" class="gridStyle"></div>
-            <div id="p23" class="gridStyle"></div>
-            <div id="p30" class="gridStyle"></div>
-            <div id="p31" class="gridStyle"></div>
-            <div id="p32" class="gridStyle"></div>
-            <!-- Last empty elemnet -->
-            <div id="p33" class="gridStyle img16"></div>
-        </div>
+        <div class='fullImage'></div>
     </div>
+    <div>
+        <Button id="startBtn" class="start" >Start</Button>
+    </div>
+    <div id="elapsedTime">            
+    </div>
+    <div id="numberOfMoves"></div>
     <script src="./src/js/gameBoard.js"></script>
     <script src="./src/js/game.js"></script>
   </body>

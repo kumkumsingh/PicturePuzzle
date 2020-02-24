@@ -51,6 +51,11 @@ body {
   font-size: 2rem;
 }
 
+.playAgain {
+  width: 100px;
+  height: 30px;
+}
+
 .img1 {
   width: 125px;
   height: 125px;

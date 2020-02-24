@@ -2,45 +2,70 @@ class GameBoard {
   constructor() {
     this.cells = [];
     this.lastElement = 16;
+    this.createCells();
+    this.numberShuffle();
+    this.populateCell();
   }
+  //Create the div elements and assign the determined id's to it.
+  createCells = () => {
+    const gameWrapper = document.getElementById("gameWrapper");
+    let divElement = document.createElement("div");
+    divElement.className = "gameGrid";
+    gameWrapper.innerHTML = "";
+    gameWrapper.appendChild(divElement);
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        let gridElement = document.createElement("div");
+        gridElement.id = `p${i}${j}`;
+        divElement.appendChild(gridElement);
+      }
+    }
+  };
+
   numberShuffle = () => {
-    //Generate random numbers from 1 to 15 to fill it in the cells of the grid.
+    // Generate random numbers from 1 to 15 to fill in the cells of the grid.
     for (let i = 0; this.cells.length < 15; i++) {
       let RandomNumber = Number(Math.floor(Math.random() * 16));
       if (!this.cells.includes(RandomNumber) && RandomNumber !== 0) {
         this.cells.push(RandomNumber);
       }
-      //To remove duplicate random value
+      // To remove the duplicate random value
       else if (this.cells.length <= 15) {
         i--;
       }
     }
-    //Push the last element which is 16th element
-    this.cells.push(this.lastElement)
+    // Push the last element always with the value of 16
+    this.cells.push(this.lastElement);
   };
-  //Populate the random numbers in each cell except last 16th element
-  // in the 16th cell because it has to be empty in order to suffle with the element which is clicked.
+
+  // Populate the random numbers and corresponding images in each cell
   populateCell = () => {
     let id = "";
-    let celElement;
+    let cellElement;
     let index = 0;
 
     for (let xPos = 0; xPos < 4; xPos++) {
       for (let yPos = 0; yPos < 4; yPos++) {
+        //Generate the id for each element in the grid cell
+        id = "p" + xPos + yPos;
+        cellElement = document.getElementById(id);
         if (!(xPos === 3 && yPos === 3)) {
-        //Generating id for each element in the grid cell e.g. p00, p01 so that random no can be assgined to it.
-          id = "p" + xPos + yPos;
-          celElement = document.getElementById(id);
-          celElement.innerHTML = this.cells[index];
-          this.assignImg(celElement, this.cells[index]);
+          cellElement.innerHTML = this.cells[index];
+          this.assignImg(cellElement, this.cells[index]);
           index++;
+        } else {
+          cellElement.innerHTML = " ";
+          this.assignImg(cellElement, this.lastElement);
         }
       }
     }
   };
-  //Assigns (125px * 125px) size image to each cell of the grid. 
-  assignImg = (celElement, cellValue) => {
+
+  //Determine the classname and assign it to the passed cell Element.
+  assignImg = (cellElement, cellValue) => {
+    cellElement.removeAttribute("class");
+    cellElement.classList.add("gridStyle");
     let imgClassName = "img" + cellValue;
-    celElement.classList.add(imgClassName);
-  }
+    cellElement.classList.add(imgClassName);
+  };
 }
