@@ -1,45 +1,39 @@
+//import constant from '../../constant';
 class Game {
   constructor() {
-    this.emptyXPos = 3;
-    this.emptyYPos = 3;
+    this.emptyXPos = 3; //x position of last empty element in the cell
+    this.emptyYPos = 3; //y poistion of laste empty elemnt in the cell
     this.isPlayerWon = this.isPlayerWon.bind(this);
+    this.exchangeIndex = this.exchangeIndex.bind(this);
+    this.exchValueNdClass = this.exchValueNdClass.bind(this);
   }
+  //This is to start the game
   start = () => {
-    //Create object of GameBoard
     this.gameBoard = new GameBoard();
     this.gameBoard.numberShuffle();
     this.gameBoard.populateCell();
+    //On click of each image in the gird this event is called.
     document.addEventListener(
       "click",
       e => {
         // If the clicked element doesn't have the right selector, then return
         if (!event.target.matches("div")) return;
         else {
-          const xPosition = e.target.id[1];
-          const yPosition = e.target.id[2];
-          if (this.isPossibleToMove(xPosition, yPosition)) {
+          //Picking 2nd and 3rd position of the id of clicked image .
+          const xPos = e.target.id[1];
+          const yPos = e.target.id[2];
+          //checks whether its possible to suffle clicked image with empty gray cell element.
+          if (this.isPossibleToMove(xPos, yPos)) {
+            //Building id of last element in the grid
             let emptyElementId = "p" + this.emptyXPos + this.emptyYPos;
             let emptyElement = document.getElementById(emptyElementId);
-            this.emptyXPos = Number(xPosition);
-            this.emptyYPos = Number(yPosition);
+            //Changing x and y position of empty element with clicked image.
+            this.emptyXPos = Number(xPos);
+            this.emptyYPos = Number(yPos);
+            //Fetching id of clicked image.
             let clickedElement = document.getElementById(e.target.id);
-            //Change index of the values once they are exchanged with emptyelement
-            let clickedElIndex = this.gameBoard.cells.indexOf(
-              Number(clickedElement.innerHTML)
-            );
-            //16th empty element index is needed to sort the cell array and finally gamewon functionality can be checked
-
-            let emptyElIndex = this.gameBoard.cells.indexOf(16);
-            let temp1 = this.gameBoard.cells[clickedElIndex];
-            this.gameBoard.cells[clickedElIndex] = 16;
-            this.gameBoard.cells[emptyElIndex] = temp1;
-            //change the value , its class of clicked element with empty cell element
-            let clickedElementClass = "img" + clickedElement.innerHTML;
-            let temp = emptyElement.innerHTML;
-            clickedElement.classList.replace(clickedElementClass, "img16");
-            emptyElement.classList.replace("img16", clickedElementClass);
-            emptyElement.innerHTML = clickedElement.innerHTML;
-            clickedElement.innerHTML = temp;
+            this.exchangeIndex(clickedElement);
+            this.exchValueNdClass(clickedElement , emptyElement);
             if (this.isPlayerWon()) {
               const fullImageDisplay = document.getElementById("gameWrapper");
               fullImageDisplay.innerHTML =
@@ -71,7 +65,29 @@ class Game {
       return false;
     }
   };
+  //Fetching index of empty element and clicked element index and exchanging the position.
+  exchangeIndex = (clickedElement) =>{
+    let clickedElIndex = this.gameBoard.cells.indexOf(
+      Number(clickedElement.innerHTML)
+    );
 
+    let emptyElIndex = this.gameBoard.cells.indexOf(this.gameBoard.lastElement);
+    let tempClickIn = this.gameBoard.cells[clickedElIndex];
+    this.gameBoard.cells[clickedElIndex] = this.gameBoard.lastElement;
+    this.gameBoard.cells[emptyElIndex] = tempClickIn;
+    console.log(this.gameBoard.cells)
+  }
+   //Exchange the value and its css class which has img as background of clicked element with empty cell element. 
+  exchValueNdClass = (clickedElement , emptyElement) =>{
+
+    let clickedElementClass = "img" + clickedElement.innerHTML;
+    let tempEmtEl = emptyElement.innerHTML;
+    clickedElement.classList.replace(clickedElementClass, "img16");
+    emptyElement.classList.replace("img16", clickedElementClass);
+    emptyElement.innerHTML = clickedElement.innerHTML;
+    clickedElement.innerHTML = tempEmtEl;
+
+  }
   //check whether player won the game
   isPlayerWon = () => {
     for (let i = 1; i <= this.gameBoard.cells.length; i++) {
