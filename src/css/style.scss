@@ -1,0 +1,30 @@
+@import "./mixins";
+body {
+    @include flexCenter(center, center);
+    flex-direction: column;
+    color: blue;
+}
+.gameGrid{
+    display: grid;
+    gap: 2px;
+    grid-template-columns: repeat(4, 1fr);
+    padding-inline-start: 10px;     
+}
+.gridStyle {
+    height: 125px;
+    width: 125px;
+    border: 1px solid black;
+    margin: 0px;
+    text-align: right;
+    color:white;
+}
+//Show Full Image when player has assembled all the cell image in correct order.
+.fullImage{
+    @include flexCenter(center, center);
+    color: white;
+    height: 500px;
+    width: 500px;
+    background: url(../../monks.jpg);
+    font-size: 2rem;
+}
+@import "./cellItems";

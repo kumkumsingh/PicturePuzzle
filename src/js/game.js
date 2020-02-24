@@ -22,7 +22,7 @@ class Game {
           //Picking 2nd and 3rd position of the id of clicked image .
           const xPos = e.target.id[1];
           const yPos = e.target.id[2];
-          //checks whether its possible to suffle clicked image with empty gray cell element.
+          //Checks whether its possible to suffle clicked image with empty gray cell element.
           if (this.isPossibleToMove(xPos, yPos)) {
             //Building id of last element in the grid
             let emptyElementId = "p" + this.emptyXPos + this.emptyYPos;
@@ -34,6 +34,7 @@ class Game {
             let clickedElement = document.getElementById(e.target.id);
             this.exchangeIndex(clickedElement);
             this.exchValueNdClass(clickedElement , emptyElement);
+            //Checks whether the player has arranged all the images in correct order.
             if (this.isPlayerWon()) {
               const fullImageDisplay = document.getElementById("gameWrapper");
               fullImageDisplay.innerHTML =
@@ -91,7 +92,7 @@ class Game {
   //check whether player won the game
   isPlayerWon = () => {
     for (let i = 1; i <= this.gameBoard.cells.length; i++) {
-      //checking whether value of each index is same as index its self
+      //checking whether value of each index is same as value of cells array .
       if (!(this.gameBoard.cells[i - 1] === i)) {
         return false;
       }
