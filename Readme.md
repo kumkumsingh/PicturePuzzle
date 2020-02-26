@@ -31,6 +31,9 @@
 - You can extract the zip file .
 - Go to PicturePuzzle Folder and open index.html file in the browser.
 
+# Deployed Version 
+
+<a>https://thepicturepuzzle.netlify.com/</a>
 <a name="Improvement"></a>
 
 # Areas of Improvement
