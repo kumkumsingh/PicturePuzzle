@@ -19,8 +19,8 @@
    it.
 4. Just one movement is possible each time.
 5. Initially the whole picture is displayed and when the player clicks on start 
-   button game starts ,all pieces are scrambled,timer also starts.
-6.  Number of moves is also displayed.
+   button game starts ,all pieces are scrambled.
+6.  Timer and Number of moves is displayed on the right side.
 7. Game ends when all pieces are in the right position, showing the image 
    clearly.
 8. Click on Start button to play the game again.
@@ -47,3 +47,5 @@ If there is more time, I would like to extend this game with below features:
     Player can be allowed to choose from a pool of images.
 4. Responsiveness:
    Currently game is not responsive on smaller screens but it can be done.
+5. Reduce Redundancy:
+   Redundancies in the css file can be reduced using SASS.

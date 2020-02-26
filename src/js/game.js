@@ -15,28 +15,29 @@ class Game {
   //Start the game
   start = () => {
     this.initialise();
-
     const elapsedTime = document.getElementById("elapsedTime");
     //Starts timer for the game
     this.timeInterval = setInterval(() => {
       elapsedTime.innerHTML = `ElapsedTime ${this.gameTime}`;
       this.gameTime++;
     }, 1000);
-
     this.stepElement = document.getElementById("numberOfMoves");
     this.stepElement.innerHTML = `Number of Moves : 0`;
 
     //On click of each image in the grid, this event is triggered.
     document.addEventListener("click", e => {
+
       // If the player clicks outside the image, then return
       if (!event.target.matches("div")) return;
       else {
+        
         //Pick 2nd and 3rd position of the id of clicked image .
         const xPos = e.target.id[1];
         const yPos = e.target.id[2];
 
         //Check whether its possible to move the clicked image with the gray cell.
         if (this.isPossibleToMove(xPos, yPos)) {
+
           //Get the id of the empty/gray element
           const emptyElementId = "p" + this.emptyXPos + this.emptyYPos;
           const emptyElement = document.getElementById(emptyElementId);
@@ -64,6 +65,7 @@ class Game {
       }
     });
   };
+
   //Initialize the variables and gameboard.
   initialise = () => {
     this.numberOfMoves = 0;
@@ -78,25 +80,25 @@ class Game {
   isPossibleToMove = (xPos, yPos) => {
     xPos = parseInt(xPos);
     yPos = parseInt(yPos);
-    if (xPos === this.emptyXPos) {
-      if (yPos - this.emptyYPos === 1 || this.emptyYPos - yPos === 1) {
-        return true;
-      } else {
-        return false;
-      }
-    } else if (yPos === this.emptyYPos) {
-      if (xPos - this.emptyXPos === 1 || this.emptyXPos - xPos === 1) {
-        return true;
-      } else {
-        return false;
-      }
+    const validMove = true;
+    const invalidMove = false;
+    const clickedEmptyRow = xPos === this.emptyXPos;
+    const clickedEmptyColumn = yPos === this.emptyYPos;
+    const isDifferenceInYposition1 =
+      yPos - this.emptyYPos === 1 || this.emptyYPos - yPos === 1;
+    const isDifferenceInXposition1 =
+      xPos - this.emptyXPos === 1 || this.emptyXPos - xPos === 1;
+    if (clickedEmptyRow && isDifferenceInYposition1) {
+      return validMove;
+    } else if (clickedEmptyColumn && isDifferenceInXposition1) {
+      return validMove;
     } else {
-      return false;
+      return invalidMove;
     }
   };
 
-  // Get the indexes of empty/gray element and clicked element,
-  // then exchange the position in the cells array.
+ /* Get the indexes of empty/gray element and clicked element,
+  then exchange the position in the cells array.*/
   exchangeIndex = clickedElement => {
     let clickedElIndex = this.gameBoard.cells.indexOf(
       Number(clickedElement.innerHTML)
@@ -107,8 +109,8 @@ class Game {
     this.gameBoard.cells[emptyElIndex] = tempClickIn;
   };
 
-  // Exchange the value and the class attribute of clicked image
-  // with the empty/gray element and clicked element  with actual element.
+  /*Exchange the value and the class attribute of clicked image
+  with the empty/gray element and clicked element  with actual element.*/
   exchangeValues = (clickedElement, emptyElement, xPos, yPos) => {
     const clickedElementClass = "img" + clickedElement.innerHTML;
     let actualImgPos = this.emptyXPos * 4 + this.emptyYPos + 1;
