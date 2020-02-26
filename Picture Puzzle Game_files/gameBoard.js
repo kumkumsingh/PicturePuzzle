@@ -23,7 +23,7 @@ class GameBoard {
   };
 
   numberShuffle = () => {
-
+      
     // Generate random numbers from 1 to 15 to fill in the cells of the grid.
     for (let i = 0; this.cells.length < 15; i++) {
       let RandomNumber = Number(Math.floor(Math.random() * 16));
@@ -57,7 +57,7 @@ class GameBoard {
           index++;
         } else {
           cellElement.innerHTML = " ";
-          cellElement.style.filter = "opacity(0.2)";
+          cellElement.style.filter = "opacity(80%)";
           this.assignImg(cellElement, this.lastElement);
         }
       }

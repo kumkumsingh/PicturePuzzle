@@ -1,28 +1,40 @@
+body{
+  background-image: url(../images/BackgroundImage3.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
 .container {
-  border-radius: 15px;
-  border: 1px solid black;
   flex-direction: column;
   margin: 0 auto;
-  width: 700px;
+  width: 800px;
+  color: Black;
 }
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.main {
+.game {
   flex-direction: column;
+  margin: 10px;
+}
+#gameWrapper {
+    background-color: gray;
+    border: 1px solid black;
 }
 .topHeader {
   justify-content: space-around;
   font-size: 1.5em;
   flex-wrap: wrap;
+  flex-direction: column;
+  margin: 10px;
 }
 .gameGrid {
   display: grid;
   gap: 2px;
   grid-template-columns: repeat(4, 1fr);
-  padding-inline-start: 10px;
+  border: 1px solid black;
 }
 .gridStyle {
   height: 125px;
@@ -37,101 +49,129 @@ and have them in the grid. */
 .img1 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) 0 0;
+  background: url(../images/monks.jpg) 0 0;
 }
 
 .img2 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) -125px 0px;
+  background: url(../images/monks.jpg) -125px 0px;
 }
 .img3 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) -250px 0px;
+  background: url(../images/monks.jpg) -250px 0px;
 }
 .img4 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) -375px 0px;
+  background: url(../images/monks.jpg) -375px 0px;
 }
 .img5 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) 0px -125px;
+  background: url(../images/monks.jpg) 0px -125px;
 }
 .img6 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) -125px -125px;
+  background: url(../images/monks.jpg) -125px -125px;
 }
 .img7 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) -250px -125px;
+  background: url(../images/monks.jpg) -250px -125px;
 }
 .img8 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) -375px -125px;
+  background: url(../images/monks.jpg) -375px -125px;
 }
 .img9 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) 0px -250px;
+  background: url(../images/monks.jpg) 0px -250px;
 }
 .img10 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) -125px -250px;
+  background: url(../images/monks.jpg) -125px -250px;
 }
 .img11 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) -250px -250px;
+  background: url(../images/monks.jpg) -250px -250px;
 }
 .img12 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) -375px -250px;
+  background: url(../images/monks.jpg) -375px -250px;
 }
 .img13 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) 0px -375px;
+  background: url(../images/monks.jpg) 0px -375px;
 }
 .img14 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) -125px -375px;
+  background: url(../images/monks.jpg) -125px -375px;
 }
 .img15 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) -250px -375px;
+  background: url(../images/monks.jpg) -250px -375px;
 }
 .img16 {
   width: 125px;
   height: 125px;
-  background: url(../../monks.jpg) -375px -375px;
+  background: url(../images/monks.jpg) -375px -375px;
 }
 /* Show Full Image when player has assembled all the cell image in correct order. */
 .fullImage {
   color: white;
   height: 500px;
   width: 500px;
-  background: url(../../monks.jpg);
+  background: url(../images/monks.jpg);
   font-size: 2rem;
+  border: 1px solid black;
 }
 .play {
   margin-top: 10px;
   background-color: black;
   width: 140px;
-  border-radius: 30px;
+  border-radius: 5px;
   color: white;
   padding: 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
+}
+
+#elapsedTime {
+    background-color: peru;
+}
+.general {
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  margin: 10px;
+  border: 0.5px solid white ; 
+}
+#numberOfMoves {
+    background-color: brown;
+
+}
+.title {
+    background-color: black;
+    color: white;
+    width: 300px;
+    height: 70px;
+    border-radius: 5px;
+    border: 0.5px solid white; 
+    text-align: center;
+    margin: 10px; 
 }

@@ -6,18 +6,15 @@ class Game {
     this.exchangeValues = this.exchangeValues.bind(this);
     this.play = this.play.bind(this);
     this.addListener();
-    this.playBtn;
   }
   addListener = () => {
-    this.playBtn = document.getElementById("playBtn");
+    const playBtn = document.getElementById("playBtn");
     playBtn.addEventListener("click", () => this.play());
-    
   };
 
   //Play the game
   play = () => {
     this.initialise();
-    this.playBtn.innerHTML="Play Again";
     const elapsedTime = document.getElementById("elapsedTime");
 
     //Starts timer for the game
@@ -61,7 +58,7 @@ class Game {
           if (this.isGameOver()) {
             const fullImageDisplay = document.getElementById("gameWrapper");
             fullImageDisplay.innerHTML =
-              "<div class='fullImage'></div>";
+              "<div class='fullImage'>You Won the Game!</div>";
           }
         }
       
@@ -122,7 +119,7 @@ class Game {
     const tempEmtyEl = emptyElement.innerHTML;
     clickedElement.classList.replace(clickedElementClass, actualElementClass);
     emptyElement.classList.replace(greyElementClass, clickedElementClass);
-    clickedElement.style.filter = "opacity(0.2)";
+    clickedElement.style.filter = "opacity(0.4)";
     emptyElement.style.filter = "opacity(1)";
     emptyElement.innerHTML = clickedElement.innerHTML;
     clickedElement.innerHTML = tempEmtyEl;

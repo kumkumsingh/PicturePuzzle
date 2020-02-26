@@ -7,19 +7,20 @@
     <link rel="stylesheet" href="./src/css/style.css" />
   </head>
   <body>
-    
-    <div class="container  center">
-      <div class="topHeader center">
-        <div>Sliding Puzzle:</div>
-        <div id="elapsedTime"></div>
-        <div id="numberOfMoves"></div>
-      </div>
-      <div class="main center">
-        <div id="gameWrapper">
-          <div class="fullImage center"></div>
+    <div class="container center">
+        <div class="center">
+        <div class="game center">
+          <div class="title center"><h2>Sliding Puzzle</h2></div>
+          <div id="gameWrapper">
+            <div class="fullImage center"></div>
+          </div>
+          <div>
+            <button id="playBtn" class="play">Play</button>
+          </div>
         </div>
-        <div>
-          <button id="playBtn" class="play">Play</button>
+        <div class="topHeader center">
+          <div id="elapsedTime" class="general">Timer: 0</div>
+          <div id="numberOfMoves" class="general">Moves: 0</div>
         </div>
       </div>
     </div>
