@@ -1,15 +1,15 @@
 //import constant from '../../constant';
 class Game {
   constructor() {
-    this.isPlayerWon = this.isPlayerWon.bind(this);
+    this.isGameOver = this.isGameOver.bind(this);
     this.exchangeIndex = this.exchangeIndex.bind(this);
     this.exchangeValues = this.exchangeValues.bind(this);
     this.start = this.start.bind(this);
     this.addListener();
   }
   addListener = () => {
-    const playAgButton = document.getElementById("startBtn");
-    playAgButton.addEventListener("click", () => this.start());
+    const start = document.getElementById("startBtn");
+    start.addEventListener("click", () => this.start());
   };
 
   //Start the game
@@ -17,6 +17,7 @@ class Game {
     this.initialise();
 
     const elapsedTime = document.getElementById("elapsedTime");
+    //Starts timer for the game
     this.timeInterval = setInterval(() => {
       elapsedTime.innerHTML = `ElapsedTime ${this.gameTime}`;
       this.gameTime++;
@@ -40,21 +41,21 @@ class Game {
           const emptyElementId = "p" + this.emptyXPos + this.emptyYPos;
           const emptyElement = document.getElementById(emptyElementId);
 
-          //Change x and y position of empty element with clicked image.
-          this.emptyXPos = Number(xPos);
-          this.emptyYPos = Number(yPos);
-
           //Get the id of clicked image.
           const clickedElement = document.getElementById(e.target.id);
           this.exchangeIndex(clickedElement);
-          this.exchangeValues(clickedElement, emptyElement);
+          this.exchangeValues(clickedElement, emptyElement, xPos, yPos);
+
+          //Change x and y position of empty element with clicked image.
+          this.emptyXPos = Number(xPos);
+          this.emptyYPos = Number(yPos);
 
           //Increment the number of moves.
           this.numberOfMoves++;
           this.stepElement.innerHTML = `Number of Moves : ${this.numberOfMoves}`;
 
-          //If the game is won, display the full image.
-          if (this.isPlayerWon()) {
+          //If the game is over, display the full image.
+          if (this.isGameOver()) {
             const fullImageDisplay = document.getElementById("gameWrapper");
             fullImageDisplay.innerHTML =
               "<div class='fullImage'>You Won the Game!</div>";
@@ -63,7 +64,7 @@ class Game {
       }
     });
   };
-  //Initialize the variables and gameboard. 
+  //Initialize the variables and gameboard.
   initialise = () => {
     this.numberOfMoves = 0;
     this.emptyXPos = 3; //x position of empty/gray element
@@ -100,37 +101,42 @@ class Game {
     let clickedElIndex = this.gameBoard.cells.indexOf(
       Number(clickedElement.innerHTML)
     );
-
     let emptyElIndex = this.gameBoard.cells.indexOf(this.gameBoard.lastElement);
-    let tempClickIn = this.gameBoard.cells[clickedElIndex];
+    const tempClickIn = this.gameBoard.cells[clickedElIndex];
     this.gameBoard.cells[clickedElIndex] = this.gameBoard.lastElement;
     this.gameBoard.cells[emptyElIndex] = tempClickIn;
-    console.log(this.gameBoard.cells);
   };
 
   // Exchange the value and the class attribute of clicked image
-  // with the empty/gray element.
-  exchangeValues = (clickedElement, emptyElement) => {
-    let clickedElementClass = "img" + clickedElement.innerHTML;
-    let tempEmtEl = emptyElement.innerHTML;
-    clickedElement.classList.replace(clickedElementClass, "img16");
-    emptyElement.classList.replace("img16", clickedElementClass);
+  // with the empty/gray element and clicked element  with actual element.
+  exchangeValues = (clickedElement, emptyElement, xPos, yPos) => {
+    const clickedElementClass = "img" + clickedElement.innerHTML;
+    let actualImgPos = this.emptyXPos * 4 + this.emptyYPos + 1;
+    const greyElementClass = "img" + actualImgPos;
+    actualImgPos = Number(xPos) * 4 + Number(yPos) + 1;
+    const actualElementClass = "img" + actualImgPos;
+    const tempEmtyEl = emptyElement.innerHTML;
+    clickedElement.classList.replace(clickedElementClass, actualElementClass);
+    emptyElement.classList.replace(greyElementClass, clickedElementClass);
+    clickedElement.style.filter = "opacity(0.4)";
+    emptyElement.style.filter = "opacity(1)";
     emptyElement.innerHTML = clickedElement.innerHTML;
-    clickedElement.innerHTML = tempEmtEl;
+    clickedElement.innerHTML = tempEmtyEl;
   };
 
-  // Check whether the game is won
-  isPlayerWon = () => {
+  // Check whether the game is over
+  isGameOver = () => {
     for (let i = 1; i <= this.gameBoard.cells.length; i++) {
       //Checking whether value of each index is same as value of cells array .
       if (!(this.gameBoard.cells[i - 1] === i)) {
         return false;
       }
     }
+    //Clears the timer for the game and restarts the timer for new game on click of start.
     clearInterval(this.timeInterval);
     return true;
   };
 }
 
-//calling start function to start the game
+//Creating a new game
 const game = new Game();

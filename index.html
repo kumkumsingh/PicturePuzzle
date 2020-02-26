@@ -8,15 +8,20 @@
   </head>
   <body>
     <h1>Picture Puzzle Game</h1>
-    <div id="gameWrapper">
-        <div class='fullImage'></div>
+    <div class="container">
+      <div class="main">
+        <div id="gameWrapper">
+          <div class="fullImage"></div>
+        </div>
+        <div>
+          <button id="startBtn" class="start">Start</button>
+        </div>
+      </div>
+      <div class="sideBar">
+        <div id="elapsedTime"></div>
+        <div id="numberOfMoves"></div>
+      </div>
     </div>
-    <div>
-        <Button id="startBtn" class="start" >Start</Button>
-    </div>
-    <div id="elapsedTime">            
-    </div>
-    <div id="numberOfMoves"></div>
     <script src="./src/js/gameBoard.js"></script>
     <script src="./src/js/game.js"></script>
   </body>

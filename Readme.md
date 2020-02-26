@@ -15,15 +15,15 @@
 
 1. This is a bi-dimensional puzzle game(4x4).
 2. Each piece can move in 4 directions (up, down, left, right).
-3. Initially the whole picture is displayed and then when you click on start 
-   button game starts and time elapsed also starts.
-4. All pieces are scrambled.
-5. Movement of a piece is just possible when there is an empty cell next to 
+3. Movement of a piece is just possible when there is an empty cell next to 
    it.
-6. Just one movement is possible each time.
+4. Just one movement is possible each time.
+5. Initially the whole picture is displayed and when the player clicks on start 
+   button game starts ,all pieces are scrambled,timer also starts.
+6.  Number of moves is also displayed.
 7. Game ends when all pieces are in the right position, showing the image 
    clearly.
-8. Play Again button to play the game again.
+8. Click on Start button to play the game again.
 
 <a name="run"></a>
 
@@ -45,3 +45,5 @@ If there is more time, I would like to extend this game with below features:
 3. Option to choose the image:
     Currently game is designed with one image specified in the requirement.
     Player can be allowed to choose from a pool of images.
+4. Responsiveness:
+   Currently game is not responsive on smaller screens but it can be done.

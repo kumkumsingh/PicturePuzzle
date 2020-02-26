@@ -55,6 +55,7 @@ class GameBoard {
           index++;
         } else {
           cellElement.innerHTML = " ";
+          cellElement.style.filter = "opacity(80%)";
           this.assignImg(cellElement, this.lastElement);
         }
       }
@@ -65,7 +66,7 @@ class GameBoard {
   assignImg = (cellElement, cellValue) => {
     cellElement.removeAttribute("class");
     cellElement.classList.add("gridStyle");
-    let imgClassName = "img" + cellValue;
+    const imgClassName = "img" + cellValue;
     cellElement.classList.add(imgClassName);
   };
 }
