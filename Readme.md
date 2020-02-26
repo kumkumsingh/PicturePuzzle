@@ -18,12 +18,12 @@
 3. Movement of a piece is just possible when there is an empty cell next to 
    it.
 4. Just one movement is possible each time.
-5. Initially the whole picture is displayed and when the player clicks on start 
+5. Initially the whole picture is displayed and when the player clicks on play 
    button game starts ,all pieces are scrambled.
 6.  Timer and Number of moves is displayed on the right side.
 7. Game ends when all pieces are in the right position, showing the image 
    clearly.
-8. Click on Start button to play the game again.
+8. Click on Play button to play the game again.
 
 <a name="run"></a>
 

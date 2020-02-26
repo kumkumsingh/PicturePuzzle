@@ -7,21 +7,23 @@
     <link rel="stylesheet" href="./src/css/style.css" />
   </head>
   <body>
-    <h1>Picture Puzzle Game</h1>
-    <div class="container">
-      <div class="main">
-        <div id="gameWrapper">
-          <div class="fullImage"></div>
-        </div>
-        <div>
-          <button id="startBtn" class="start">Start</button>
-        </div>
-      </div>
-      <div class="sideBar">
+    
+    <div class="container  center">
+      <div class="topHeader center">
+        <div>Sliding Puzzle:</div>
         <div id="elapsedTime"></div>
         <div id="numberOfMoves"></div>
       </div>
+      <div class="main center">
+        <div id="gameWrapper">
+          <div class="fullImage center"></div>
+        </div>
+        <div>
+          <button id="playBtn" class="play">Play</button>
+        </div>
+      </div>
     </div>
+
     <script src="./src/js/gameBoard.js"></script>
     <script src="./src/js/game.js"></script>
   </body>

@@ -1,29 +1,22 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  color: black;
-}
 .container {
+  border-radius: 15px;
+  border: 1px solid black;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 700px;
+}
+.center {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
 }
 .main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
 }
-.sideBar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.topHeader {
+  justify-content: space-around;
   font-size: 1.5em;
-  padding: 10px;
+  flex-wrap: wrap;
 }
 .gameGrid {
   display: grid;
@@ -39,7 +32,8 @@ body {
   text-align: right;
   color: white;
 }
-/* Diving MediaMonks picture into 125px * 125px size using css sprite and have them in the grid. */
+/* Diving MediaMonks picture into 125px * 125px size using css sprite 
+and have them in the grid. */
 .img1 {
   width: 125px;
   height: 125px;
@@ -123,23 +117,21 @@ body {
 }
 /* Show Full Image when player has assembled all the cell image in correct order. */
 .fullImage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: white;
   height: 500px;
   width: 500px;
   background: url(../../monks.jpg);
   font-size: 2rem;
 }
-.start {
+.play {
   margin-top: 10px;
-  background-color: #555555; /* Black */
-  border: none;
+  background-color: black;
+  width: 140px;
+  border-radius: 30px;
   color: white;
-  padding: 15px 32px;
+  padding: 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 20px;
 }

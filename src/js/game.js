@@ -4,36 +4,35 @@ class Game {
     this.isGameOver = this.isGameOver.bind(this);
     this.exchangeIndex = this.exchangeIndex.bind(this);
     this.exchangeValues = this.exchangeValues.bind(this);
-    this.start = this.start.bind(this);
+    this.play = this.play.bind(this);
     this.addListener();
   }
   addListener = () => {
-    const start = document.getElementById("startBtn");
-    start.addEventListener("click", () => this.start());
+    const play = document.getElementById("playBtn");
+    play.addEventListener("click", () => this.play());
   };
 
-  //Start the game
-  start = () => {
+  //Play the game
+  play = () => {
     this.initialise();
     const elapsedTime = document.getElementById("elapsedTime");
+
     //Starts timer for the game
     this.timeInterval = setInterval(() => {
-      elapsedTime.innerHTML = `ElapsedTime ${this.gameTime}`;
+      elapsedTime.innerHTML = `Timer: ${this.gameTime}`;
       this.gameTime++;
     }, 1000);
     this.stepElement = document.getElementById("numberOfMoves");
-    this.stepElement.innerHTML = `Number of Moves : 0`;
+    this.stepElement.innerHTML = `Moves : 0`;
 
     //On click of each image in the grid, this event is triggered.
     document.addEventListener("click", e => {
 
       // If the player clicks outside the image, then return
       if (!event.target.matches("div")) return;
-      else {
-        
+  
         //Pick 2nd and 3rd position of the id of clicked image .
-        const xPos = e.target.id[1];
-        const yPos = e.target.id[2];
+        const [_, xPos, yPos] = e.target.id;
 
         //Check whether its possible to move the clicked image with the gray cell.
         if (this.isPossibleToMove(xPos, yPos)) {
@@ -53,7 +52,7 @@ class Game {
 
           //Increment the number of moves.
           this.numberOfMoves++;
-          this.stepElement.innerHTML = `Number of Moves : ${this.numberOfMoves}`;
+          this.stepElement.innerHTML = `Moves : ${this.numberOfMoves}`;
 
           //If the game is over, display the full image.
           if (this.isGameOver()) {
@@ -62,7 +61,7 @@ class Game {
               "<div class='fullImage'>You Won the Game!</div>";
           }
         }
-      }
+      
     });
   };
 
@@ -104,9 +103,9 @@ class Game {
       Number(clickedElement.innerHTML)
     );
     let emptyElIndex = this.gameBoard.cells.indexOf(this.gameBoard.lastElement);
-    const tempClickIn = this.gameBoard.cells[clickedElIndex];
+    const tempClickIndex = this.gameBoard.cells[clickedElIndex];
     this.gameBoard.cells[clickedElIndex] = this.gameBoard.lastElement;
-    this.gameBoard.cells[emptyElIndex] = tempClickIn;
+    this.gameBoard.cells[emptyElIndex] = tempClickIndex;
   };
 
   /*Exchange the value and the class attribute of clicked image
@@ -129,7 +128,7 @@ class Game {
   // Check whether the game is over
   isGameOver = () => {
     for (let i = 1; i <= this.gameBoard.cells.length; i++) {
-      //Checking whether value of each index is same as value of cells array .
+      //Checking whether value of each index of the array is same as value of cells array .
       if (!(this.gameBoard.cells[i - 1] === i)) {
         return false;
       }
